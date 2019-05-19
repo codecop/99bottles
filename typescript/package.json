@@ -10,7 +10,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "tsc --noEmit -p . && jest --no-cache",
+    "test": "tsc --noEmit -p . && node node_modules\\jest\\bin\\jest.js --no-cache",
     "lint": "tsc --noEmit -p . && tslint \"*.ts?(x)\"",
     "lintci": "tslint \"*.ts?(x)\" --force"
   },
