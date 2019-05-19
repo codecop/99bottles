@@ -23,7 +23,6 @@ Take one down and pass it around, 2 bottles of beer on the wall.
   end
 
   def test_verse_2
-    skip
     expected = <<-TEXT
 2 bottles of beer on the wall, 2 bottles of beer.
 Take one down and pass it around, 1 bottle of beer on the wall.

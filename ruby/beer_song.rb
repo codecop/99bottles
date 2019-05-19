@@ -13,8 +13,40 @@ class Verse
   end
 
   def to_s
-    "#{@number} bottles of beer on the wall, #{@number} bottles of beer." + "\n"+
-    "Take one down and pass it around, #{@number - 1} bottles of beer on the wall." + "\n"
+    b = Bottles.new(@number)
+    "#{b.description} on the wall, #{b.description}." + "\n"+
+    "Take one down and pass it around, #{b.next.description} on the wall." + "\n"
+  end
+
+end
+
+class Bottles
+
+  def initialize(number)
+    @number = number
+  end
+
+  def description
+    "#{@number} bottles of beer"
+  end
+
+  def next
+    if @number == 2
+      OneBottle.new
+    else
+      Bottles.new(@number-1)
+    end
+  end
+
+end
+
+class OneBottle
+
+  def description
+    "1 bottle of beer"
+  end
+
+  def next
   end
 
 end
