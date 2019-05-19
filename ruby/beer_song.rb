@@ -9,10 +9,21 @@ class BeerSong
       @bottles = NoBottles.new()
     end
   end
-  
-  def verse(number)
-    set(number)
-    
+
+  def verses(from=99, to=0)
+    set(from)
+
+    song = verse
+    while @bottles.number >= to
+      song += "\n" + verse
+    end
+
+    song
+  end
+
+  def verse(number=nil)
+    if number then set(number) end # only for first tests
+
     refrain + "\n" +
       text + ", " +
       nextVerse().bottles_of_beer_on_the_wall() + "." + "\n"
@@ -31,7 +42,7 @@ class BeerSong
   end
 
   private
-  
+
   def bottles
     @bottles.count
   end
@@ -48,6 +59,8 @@ class BeerSong
 end
 
 class Bottles
+
+  attr_reader :number
 
   def initialize(number)
     @number = number
@@ -92,6 +105,10 @@ class Bottle < Bottles
 end
 
 class NoBottles
+
+  def number
+    0
+  end
 
   def count
     "no more bottles"
