@@ -1,27 +1,14 @@
 class BeerSong
 
   def verse(number)
-    Verse.new(number).to_s
-  end
-
-end
-
-class Verse
-
-  def initialize(number)
-    @number = number
-  end
-
-  def to_s
-    if @number > 1
-      b = Bottles.new(@number)
-    elsif @number == 1
-      b = OneBottle.new()
+    if number > 1
+      b = Bottles.new(number)
+    elsif number == 1
+      b = OneBottle.new(1)
     else
       b = NoBottle.new()
     end
-    "#{b.description} on the wall, #{b.description}." + "\n"+
-    "Take #{b.it} down and pass it around, #{b.next.description} on the wall." + "\n"
+    b.verse()
   end
 
 end
@@ -32,25 +19,30 @@ class Bottles
     @number = number
   end
 
+  def verse
+    "#{description()} on the wall, #{description()}." + "\n" +
+    "Take #{it()} down and pass it around, #{nextB().description()} on the wall." + "\n"
+  end
+
   def description
     "#{@number} bottles of beer"
   end
-  
+
   def it
     "one"
   end
 
-  def next
-    if @number == 2
-      OneBottle.new
-    else
+  def nextB
+    if @number > 2
       Bottles.new(@number-1)
+    else
+      OneBottle.new(1)
     end
   end
 
 end
 
-class OneBottle
+class OneBottle < Bottles
 
   def description
     "1 bottle of beer"
@@ -59,8 +51,8 @@ class OneBottle
   def it
     "it"
   end
-  
-  def next
+
+  def nextB
     NoBottle.new
   end
 
@@ -68,11 +60,13 @@ end
 
 class NoBottle
 
+  def verse
+    "#{description()} on the wall, #{description()}." + "\n" +
+    "Go to the store and buy some more, 99 bottles of beer on the wall." + "\n"
+  end
+  
   def description
     "no more bottles of beer"
-  end
-
-  def next
   end
 
 end
