@@ -93,7 +93,7 @@
             "check-separator",
             "check-type"
         ],
-        "no-namespace": true, 
+        "no-namespace": true,
         "prefer-for-of": true,
         "only-arrow-functions": [true, "allow-declarations"],
         "no-var-requires": true,
@@ -112,7 +112,6 @@
         "no-null-keyword": true,
         "no-string-literal": true,
         "radix": true,
-        "typeof-compare": true,
         "use-isnan": true,
         "prefer-const": true,
         "array-type": [true, "array-simple"],
