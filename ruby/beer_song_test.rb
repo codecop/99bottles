@@ -1,14 +1,16 @@
-require 'minitest/autorun'
+require 'test/unit'
+
 require_relative 'beer_song'
 
 # Common test data version: 1.0.0 9f3d48a
-class BeerSongTest < Minitest::Test
+class BeerSongTest < Test::Unit::TestCase
+
   def test_first_generic_verse
     # skip
     expected = <<-TEXT
 99 bottles of beer on the wall, 99 bottles of beer.
 Take one down and pass it around, 98 bottles of beer on the wall.
-TEXT
+    TEXT
     assert_equal expected, BeerSong.new.verse(99)
   end
 
@@ -17,7 +19,7 @@ TEXT
     expected = <<-TEXT
 3 bottles of beer on the wall, 3 bottles of beer.
 Take one down and pass it around, 2 bottles of beer on the wall.
-TEXT
+    TEXT
     assert_equal expected, BeerSong.new.verse(3)
   end
 
@@ -26,7 +28,7 @@ TEXT
     expected = <<-TEXT
 2 bottles of beer on the wall, 2 bottles of beer.
 Take one down and pass it around, 1 bottle of beer on the wall.
-TEXT
+    TEXT
     assert_equal expected, BeerSong.new.verse(2)
   end
 
@@ -35,7 +37,7 @@ TEXT
     expected = <<-TEXT
 1 bottle of beer on the wall, 1 bottle of beer.
 Take it down and pass it around, no more bottles of beer on the wall.
-TEXT
+    TEXT
     assert_equal expected, BeerSong.new.verse(1)
   end
 
@@ -44,7 +46,7 @@ TEXT
     expected = <<-TEXT
 No more bottles of beer on the wall, no more bottles of beer.
 Go to the store and buy some more, 99 bottles of beer on the wall.
-TEXT
+    TEXT
     assert_equal expected, BeerSong.new.verse(0)
   end
 
@@ -56,7 +58,7 @@ Take one down and pass it around, 98 bottles of beer on the wall.
 
 98 bottles of beer on the wall, 98 bottles of beer.
 Take one down and pass it around, 97 bottles of beer on the wall.
-TEXT
+    TEXT
     assert_equal expected, BeerSong.new.verses(99, 98)
   end
 
@@ -71,7 +73,7 @@ Take it down and pass it around, no more bottles of beer on the wall.
 
 No more bottles of beer on the wall, no more bottles of beer.
 Go to the store and buy some more, 99 bottles of beer on the wall.
-TEXT
+    TEXT
     assert_equal expected, BeerSong.new.verses(2, 0)
   end
 
@@ -377,7 +379,7 @@ Take it down and pass it around, no more bottles of beer on the wall.
 
 No more bottles of beer on the wall, no more bottles of beer.
 Go to the store and buy some more, 99 bottles of beer on the wall.
-TEXT
+    TEXT
     assert_equal expected, BeerSong.new.verses(99, 0)
   end
 
