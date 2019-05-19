@@ -332,7 +332,7 @@ http://exercism.io/languages/typescript
 Install assignment dependencies:
 
 ```bash
-$ yarn install
+yarn install
 ```
 
 ## Making the test suite pass
@@ -340,14 +340,13 @@ $ yarn install
 Execute the tests with:
 
 ```bash
-$ yarn test
+yarn test
 ```
-
-
 
 ## Source
 
 Learn to Program by Chris Pine [http://pine.fm/LearnToProgram/?Chapter=06](http://pine.fm/LearnToProgram/?Chapter=06)
 
 ## Submitting Incomplete Solutions
+
 It's possible to submit an incomplete solution so you can see how others have completed the exercise.
