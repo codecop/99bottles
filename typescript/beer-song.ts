@@ -30,10 +30,11 @@ export default class Beer {
     }
 
     static sing(start: number = 99, end: number = 0): string {
-        if (start < end) {
-            return ''
+        const current = Beer.verse(start)
+        if (start <= end) {
+            return current
         }
-        return Beer.verse(start) + Beer.sing(start - 1, end)
+        return current + "\n" + Beer.sing(start - 1, end)
     }
 
 }
