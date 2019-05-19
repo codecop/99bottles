@@ -61,12 +61,16 @@ end
 class NoBottle
 
   def verse
-    "#{description()} on the wall, #{description()}." + "\n" +
-    "Go to the store and buy some more, 99 bottles of beer on the wall." + "\n"
+    "#{description().capitalize()} on the wall, #{description()}." + "\n" +
+    "Go to the store and buy some more, #{nextB().description()} on the wall." + "\n"
   end
   
   def description
     "no more bottles of beer"
+  end
+
+  def nextB
+    Bottles.new(99)
   end
 
 end
