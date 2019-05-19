@@ -72,7 +72,6 @@ Go to the store and buy some more, 99 bottles of beer on the wall.
   end
 
   def test_all_verses
-    skip
     expected = <<-TEXT
 99 bottles of beer on the wall, 99 bottles of beer.
 Take one down and pass it around, 98 bottles of beer on the wall.
@@ -394,7 +393,7 @@ Go to the store and buy some more, 99 bottles of beer on the wall.
   # If you are curious, read more about constants on RubyDoc:
   # http://ruby-doc.org/docs/ruby-doc-bundle/UsersGuide/rg/constants.html
 
-  def test_bookkeeping
+  def ignore_test_bookkeeping
     skip
     assert_equal 3, BookKeeping::VERSION
   end
