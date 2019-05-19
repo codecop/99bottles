@@ -1,24 +1,21 @@
 class BeerSong
 
-  def verse(number)
+  def set(number)
     if number > 1
-      b = Bottles.new(number)
+      @bottles = Bottles.new(number)
     elsif number == 1
-      b = Bottle.new(1)
+      @bottles = Bottle.new(1)
     else
-      b = NoBottle.new()
+      @bottles = NoBottle.new()
     end
-    b.verse()
   end
-
-end
-
-class Verse
-
-  def verse
+  
+  def verse(number)
+    set(number)
+    
     refrain + "\n" +
-      second_line + ", " +
-      "#{nextVerse().bottles_of_beer_on_the_wall()}." + "\n"
+    second_line + ", " +
+    "#{nextVerse().bottles_of_beer_on_the_wall()}." + "\n"
   end
 
   def refrain
@@ -34,20 +31,21 @@ class Verse
   end
 
   def bottles
-    raise 'abstract'
+    @bottles.bottles
   end
 
   def second_line
-    raise 'abstract'
+    @bottles.second_line
   end
 
   def nextVerse
-    raise 'abstract'
+    @bottles = @bottles.nextVerse
+    self
   end
 
 end
 
-class Bottles < Verse
+class Bottles
 
   def initialize(number)
     @number = number
@@ -91,7 +89,7 @@ class Bottle < Bottles
 
 end
 
-class NoBottle < Verse
+class NoBottle
 
   def bottles
     "no more bottles"
