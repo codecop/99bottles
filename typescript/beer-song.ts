@@ -12,15 +12,23 @@ export default class Beer {
     }
 
     private static bottles(numberOfBottles: number): string {
-        if (numberOfBottles > 1) {
-            return `${numberOfBottles} bottles`
+        const numberOf = Beer.numberOf(numberOfBottles)
+        const bottles = Beer.pluralize(numberOfBottles)
+        return `${numberOf} ${bottles}`
+    }
+
+    private static numberOf(numberOfBottles: number): string {
+        if (numberOfBottles === 0) {
+            return `no more`
         }
-        else if (numberOfBottles === 1) {
-            return `${numberOfBottles} bottle`
+        return `${numberOfBottles}`
+    }
+
+    private static pluralize(numberOfBottles: number): string {
+        if (numberOfBottles === 1) {
+            return 'bottle'
         }
-        else {
-            return `no more bottles`
-        }
+        return 'bottles'
     }
 
     private static capitalizeSentence(sentence: string): string {
@@ -28,11 +36,10 @@ export default class Beer {
     }
 
     private static secondLine(numberOfBottles: number): string {
-        if (numberOfBottles > 0) {
-            return Beer.takeOneDown(numberOfBottles)
-        } else {
+        if (numberOfBottles === 0) {
             return Beer.goToTheStore()
         }
+        return Beer.takeOneDown(numberOfBottles)
     }
 
     private static takeOneDown(numberOfBottles: number) {
@@ -51,7 +58,7 @@ export default class Beer {
 `
     }
 
-    static sing(start: number = 99, end: number = 0): string {
+    public static sing(start: number = 99, end: number = 0): string {
         const current = Beer.verse(start)
         if (start <= end) {
             return current
