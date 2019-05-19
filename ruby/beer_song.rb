@@ -10,12 +10,13 @@ class BeerSong
     end
   end
 
-  def verses(from=99, to=0)
+  def verses(from, to)
     set(from)
 
     song = verse
-    while @bottles.number >= to
+    while from  > to
       song += "\n" + verse
+      from -= 1
     end
 
     song
