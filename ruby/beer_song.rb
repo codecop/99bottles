@@ -6,7 +6,7 @@ class BeerSong
     elsif number == 1
       @bottles = Bottle.new(1)
     else
-      @bottles = NoBottle.new()
+      @bottles = NoBottles.new()
     end
   end
   
@@ -14,8 +14,8 @@ class BeerSong
     set(number)
     
     refrain + "\n" +
-    second_line + ", " +
-    "#{nextVerse().bottles_of_beer_on_the_wall()}." + "\n"
+      text + ", " +
+      nextVerse().bottles_of_beer_on_the_wall() + "." + "\n"
   end
 
   def refrain
@@ -30,16 +30,18 @@ class BeerSong
     "#{bottles()} of beer"
   end
 
+  private
+  
   def bottles
-    @bottles.bottles
+    @bottles.count
   end
 
-  def second_line
-    @bottles.second_line
+  def text
+    @bottles.use
   end
 
   def nextVerse
-    @bottles = @bottles.nextVerse
+    @bottles = @bottles.decrease
     self
   end
 
@@ -51,11 +53,11 @@ class Bottles
     @number = number
   end
 
-  def bottles
+  def count
     "#{@number} bottles"
   end
 
-  def second_line
+  def use
     "Take #{it()} down and pass it around"
   end
 
@@ -63,7 +65,7 @@ class Bottles
     "one"
   end
 
-  def nextVerse
+  def decrease
     if @number > 2
       Bottles.new(@number-1)
     else
@@ -75,7 +77,7 @@ end
 
 class Bottle < Bottles
 
-  def bottles
+  def count
     "#{@number} bottle"
   end
 
@@ -83,23 +85,23 @@ class Bottle < Bottles
     "it"
   end
 
-  def nextVerse
-    NoBottle.new
+  def decrease
+    NoBottles.new
   end
 
 end
 
-class NoBottle
+class NoBottles
 
-  def bottles
+  def count
     "no more bottles"
   end
 
-  def second_line
+  def use
     "Go to the store and buy some more"
   end
 
-  def nextVerse
+  def decrease
     Bottles.new(99)
   end
 
