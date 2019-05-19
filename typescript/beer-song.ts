@@ -1,14 +1,13 @@
 export default class Beer {
 
     public static verse(numberOfBottles: number): string {
-        return Beer.firstLine(numberOfBottles) +
-            Beer.secondLine(numberOfBottles)
+        return Beer.firstLine(numberOfBottles) + "\n" +
+            Beer.secondLine(numberOfBottles) + "\n"
     }
 
     private static firstLine(numberOfBottles: number): string {
         const bottles = Beer.bottles(numberOfBottles)
-        return Beer.capitalizeSentence(`${bottles} of beer on the wall, ${bottles} of beer.
-`)
+        return Beer.capitalizeSentence(`${bottles} of beer on the wall, ${bottles} of beer.`)
     }
 
     private static bottles(numberOfBottles: number): string {
@@ -45,8 +44,7 @@ export default class Beer {
     private static takeOneDown(numberOfBottles: number) {
         const it = Beer.it(numberOfBottles)
         const remainingBottles = Beer.bottles(numberOfBottles - 1)
-        return `Take ${it} down and pass it around, ${remainingBottles} of beer on the wall.
-`
+        return `Take ${it} down and pass it around, ${remainingBottles} of beer on the wall.`
     }
 
     private static it(numberOfBottles: number): string {
@@ -54,16 +52,16 @@ export default class Beer {
     }
 
     private static goToTheStore() {
-        return `Go to the store and buy some more, 99 bottles of beer on the wall.
-`
+        return "Go to the store and buy some more, 99 bottles of beer on the wall."
     }
 
-    public static sing(start: number = 99, end: number = 0): string {
-        const current = Beer.verse(start)
-        if (start <= end) {
-            return current
+    public static sing(numberOfBottles: number = 99, noBottles: number = 0): string {
+        const currentVerse = Beer.verse(numberOfBottles)
+        if (numberOfBottles <= noBottles) {
+            return currentVerse
         }
-        return current + "\n" + Beer.sing(start - 1, end)
+        return currentVerse + "\n" +
+            Beer.sing(numberOfBottles - 1, noBottles)
     }
 
 }
