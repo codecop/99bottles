@@ -1,7 +1,20 @@
 class BeerSong
 
   def verse(number)
-    "99 bottles of beer on the wall, 99 bottles of beer.\nTake one down and pass it around, 98 bottles of beer on the wall.\n"
+    Verse.new(number).to_s
+  end
+
+end
+
+class Verse
+
+  def initialize(number)
+    @number = number
+  end
+
+  def to_s
+    "#{@number} bottles of beer on the wall, #{@number} bottles of beer." + "\n"+
+    "Take one down and pass it around, #{@number - 1} bottles of beer on the wall." + "\n"
   end
 
 end
