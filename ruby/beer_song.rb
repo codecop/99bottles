@@ -13,9 +13,15 @@ class Verse
   end
 
   def to_s
-    b = Bottles.new(@number)
+    if @number > 1
+      b = Bottles.new(@number)
+    elsif @number == 1
+      b = OneBottle.new()
+    else
+      b = NoBottle.new()
+    end
     "#{b.description} on the wall, #{b.description}." + "\n"+
-    "Take one down and pass it around, #{b.next.description} on the wall." + "\n"
+    "Take #{b.it} down and pass it around, #{b.next.description} on the wall." + "\n"
   end
 
 end
@@ -28,6 +34,10 @@ class Bottles
 
   def description
     "#{@number} bottles of beer"
+  end
+  
+  def it
+    "one"
   end
 
   def next
@@ -44,6 +54,22 @@ class OneBottle
 
   def description
     "1 bottle of beer"
+  end
+
+  def it
+    "it"
+  end
+  
+  def next
+    NoBottle.new
+  end
+
+end
+
+class NoBottle
+
+  def description
+    "no more bottles of beer"
   end
 
   def next
