@@ -320,7 +320,7 @@ are some additional things you could try:
 Then please share your thoughts in a comment on the submission. Did this
 experiment make the code better? Worse? Did you learn anything from it?
 
-* * * *
+## Setup
 
 For installation and learning resources, refer to the
 [exercism help page](http://exercism.io/languages/ruby).
@@ -348,4 +348,5 @@ To include color from the command line:
 Learn to Program by Chris Pine [http://pine.fm/LearnToProgram/?Chapter=06](http://pine.fm/LearnToProgram/?Chapter=06)
 
 ## Submitting Incomplete Solutions
+
 It's possible to submit an incomplete solution so you can see how others have completed the exercise.
