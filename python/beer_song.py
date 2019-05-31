@@ -1,12 +1,12 @@
 def recite_gen(start):
     # verses
     verse = "{}, {}."
+
     bottles_of_beer_on_the_wall = "{} bottles of beer on the wall"
     bottles_of_beer = "{} bottles of beer"
 
     one_bottle_of_beer_on_the_wall = "1 bottle of beer on the wall"
-    one_bottle_of_beer = "{} bottles of beer"
-    one_bottle_of_beer_on_the_wall = "1 bottle of beer on the wall, 1 bottle of beer."
+    one_bottle_of_beer = "1 bottle of beer"
 
     take_one_down_pass_it_around = "Take one down and pass it around"
 
@@ -27,21 +27,33 @@ def recite_gen(start):
             take_one_down_pass_it_around,
             bottles_of_beer_on_the_wall.format(bottles)
         )
-
         yield newline
 
     yield verse.format(
         take_one_down_pass_it_around,
-        '1 bottle of beer on the wall'
+        one_bottle_of_beer_on_the_wall
     )
     yield newline
 
-    yield one_bottle_of_beer_on_the_wall
-    yield "Take it down and pass it around, no more bottles of beer on the wall."
+    yield verse.format(
+        one_bottle_of_beer_on_the_wall,
+        one_bottle_of_beer
+    )
+    yield verse.format(
+        "Take it down and pass it around",
+        bottles_of_beer_on_the_wall.format('no more')
+    )
     yield newline
 
-    yield bottles_of_beer_on_the_wall.format('No more') + ', ' + bottles_of_beer.format('no more') + '.'
-    yield "Go to the store and buy some more, 99 bottles of beer on the wall."
+    yield verse.format(
+        bottles_of_beer_on_the_wall.format('No more'),
+        bottles_of_beer.format('no more')
+    )
+    bottles = 99
+    yield verse.format(
+        "Go to the store and buy some more",
+        bottles_of_beer_on_the_wall.format(bottles)
+    )
 
 
 # adapt to required API
