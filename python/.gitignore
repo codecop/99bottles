@@ -1,0 +1,9 @@
+# Eclipse
+.project
+.pydevproject
+.settings
+
+# PyCharm
+.idea
+
+*.pyc
