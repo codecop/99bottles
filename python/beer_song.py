@@ -1,4 +1,4 @@
-def recite_gen(start):
+def recite_gen():
     # verses
     verse = "{}, {}."
 
@@ -60,5 +60,4 @@ def recite_gen(start):
 def recite(start, take=1):
     start_lines = (99 - start) * 3
     take_lines = start_lines + take * 3 - 1
-
-    return [line for line in recite_gen(start)][start_lines:take_lines]
+    return [line for line in recite_gen()][start_lines:take_lines]
