@@ -1,19 +1,46 @@
 def recite_gen(start):
+    # verses
+    verse = "{}, {}."
+    bottles_of_beer_on_the_wall = "{} bottles of beer on the wall"
+    bottles_of_beer = "{} bottles of beer"
+
+    one_bottle_of_beer_on_the_wall = "1 bottle of beer on the wall"
+    one_bottle_of_beer = "{} bottles of beer"
+    one_bottle_of_beer_on_the_wall = "1 bottle of beer on the wall, 1 bottle of beer."
+
+    take_one_down_pass_it_around = "Take one down and pass it around"
+
+    newline = ""
+
     bottles = 99
+    while True:
+        yield verse.format(
+            bottles_of_beer_on_the_wall.format(bottles),
+            bottles_of_beer.format(bottles)
+        )
 
-    while bottles >= 3:
-        yield "{number} bottles of beer on the wall, {number} bottles of beer.".format(number=bottles)
         bottles -= 1
-        yield "Take one down and pass it around, {number} bottles of beer on the wall.".format(number=bottles)
-        yield ""
+        if bottles == 1:
+            break
 
-    yield "2 bottles of beer on the wall, 2 bottles of beer."
-    yield "Take one down and pass it around, 1 bottle of beer on the wall."
-    yield ""
-    yield "1 bottle of beer on the wall, 1 bottle of beer."
+        yield verse.format(
+            take_one_down_pass_it_around,
+            bottles_of_beer_on_the_wall.format(bottles)
+        )
+
+        yield newline
+
+    yield verse.format(
+        take_one_down_pass_it_around,
+        '1 bottle of beer on the wall'
+    )
+    yield newline
+
+    yield one_bottle_of_beer_on_the_wall
     yield "Take it down and pass it around, no more bottles of beer on the wall."
-    yield ""
-    yield "No more bottles of beer on the wall, no more bottles of beer."
+    yield newline
+
+    yield bottles_of_beer_on_the_wall.format('No more') + ', ' + bottles_of_beer.format('no more') + '.'
     yield "Go to the store and buy some more, 99 bottles of beer on the wall."
 
 
