@@ -1,0 +1,17 @@
+19.5.2019 TypeScript
+* VS Code
+* first look at it, TS started with static function
+* ~ 1h
+* list of static functions, small, each function has only one if.
+
+19.5.2019 Ruby
+* old Eclipse
+* let's do it the OO way
+* 1h10'
+* BeerSong and Bottle Hierarchy, (almost) no if.
+
+31.5.2019 Python
+* old PyCharm
+* can it be a generator?
+* ~50'
+* recite is generator with format strings, could be single method with [].add.
